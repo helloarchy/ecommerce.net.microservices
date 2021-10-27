@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Products", "ECommerce.Api.Products\ECommerce.Api.Products.csproj", "{2C219DD2-CF3B-49FB-880B-8CDAB382E763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Customers", "ECommerce.Api.Customers\ECommerce.Api.Customers.csproj", "{FD0904C1-0016-4BFA-8BDE-2377F03AA01D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Orders", "ECommerce.Api.Orders\ECommerce.Api.Orders.csproj", "{380F32F6-5D47-4531-AADC-16B09BB521EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Api.Search", "ECommerce.Api.Search\ECommerce.Api.Search.csproj", "{2B554257-90AD-4153-86BE-03C6E8F68F13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C219DD2-CF3B-49FB-880B-8CDAB382E763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C219DD2-CF3B-49FB-880B-8CDAB382E763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C219DD2-CF3B-49FB-880B-8CDAB382E763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C219DD2-CF3B-49FB-880B-8CDAB382E763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0904C1-0016-4BFA-8BDE-2377F03AA01D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0904C1-0016-4BFA-8BDE-2377F03AA01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0904C1-0016-4BFA-8BDE-2377F03AA01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD0904C1-0016-4BFA-8BDE-2377F03AA01D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{380F32F6-5D47-4531-AADC-16B09BB521EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{380F32F6-5D47-4531-AADC-16B09BB521EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{380F32F6-5D47-4531-AADC-16B09BB521EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{380F32F6-5D47-4531-AADC-16B09BB521EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B554257-90AD-4153-86BE-03C6E8F68F13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B554257-90AD-4153-86BE-03C6E8F68F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B554257-90AD-4153-86BE-03C6E8F68F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B554257-90AD-4153-86BE-03C6E8F68F13}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
