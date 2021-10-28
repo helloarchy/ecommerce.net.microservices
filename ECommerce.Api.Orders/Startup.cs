@@ -1,19 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ECommerce.Api.Orders.Db;
 using ECommerce.Api.Orders.Interfaces;
 using ECommerce.Api.Orders.Providers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace ECommerce.Api.Orders
@@ -32,10 +25,7 @@ namespace ECommerce.Api.Orders
         {
             services.AddScoped<IOrdersProvider, OrdersProvider>();
             services.AddAutoMapper(typeof(Startup));
-            services.AddDbContext<OrdersDbContext>(options =>
-            {
-                options.UseInMemoryDatabase("Orders");
-            });
+            services.AddDbContext<OrdersDbContext>(options => { options.UseInMemoryDatabase("Orders"); });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

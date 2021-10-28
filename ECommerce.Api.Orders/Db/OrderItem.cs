@@ -1,6 +1,4 @@
-﻿using System.Security.Policy;
-
-namespace ECommerce.Api.Orders.Db
+﻿namespace ECommerce.Api.Orders.Db
 {
     public class OrderItem
     {

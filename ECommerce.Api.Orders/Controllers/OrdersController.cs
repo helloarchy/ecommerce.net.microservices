@@ -15,25 +15,13 @@ namespace ECommerce.Api.Orders.Controllers
             _ordersProvider = ordersProvider;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetOrdersAsync()
+        [HttpGet("{customerId}")]
+        public async Task<IActionResult> GetOrdersAsync(int customerId)
         {
-            var result = await _ordersProvider.GetOrdersAsync();
+            var result = await _ordersProvider.GetOrdersAsync(customerId);
             if (result.IsSuccess)
             {
                 return Ok(result.Orders);
-            }
-
-            return NotFound();
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetOrderAsync(int id)
-        {
-            var result = await _ordersProvider.GetOrderAsync(id);
-            if (result.IsSuccess)
-            {
-                return Ok(result.Order);
             }
 
             return NotFound();

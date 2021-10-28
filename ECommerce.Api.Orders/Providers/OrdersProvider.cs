@@ -37,7 +37,7 @@ namespace ECommerce.Api.Orders.Providers
                     CustomerId = 1,
                     OrderDate = new DateTime(),
                     Total = 10,
-                    Items = new OrderItem[]
+                    Items = new List<OrderItem>()
                     {
                         new OrderItem
                         {
@@ -49,7 +49,7 @@ namespace ECommerce.Api.Orders.Providers
                         }
                     }
                 });
-                
+
                 // Mouse and Monitor for John
                 _dbContext.Orders.Add(new Order
                 {
@@ -57,7 +57,7 @@ namespace ECommerce.Api.Orders.Providers
                     CustomerId = 2,
                     OrderDate = new DateTime(),
                     Total = 270,
-                    Items = new OrderItem[]
+                    Items = new List<OrderItem>()
                     {
                         new OrderItem
                         {
@@ -82,35 +82,16 @@ namespace ECommerce.Api.Orders.Providers
             }
         }
 
-        public async Task<(bool IsSuccess, IEnumerable<OrderDto> Orders, string ErrorMessage)> GetOrdersAsync()
+        public async Task<(bool IsSuccess, IEnumerable<OrderDto> Orders, string ErrorMessage)> GetOrdersAsync(
+            int customerId)
         {
             try
             {
-                var orders = await _dbContext.Orders.ToListAsync();
+                var orders = await _dbContext.Orders.Where(order => order.CustomerId == customerId).ToListAsync();
                 if (orders != null && orders.Any())
                 {
                     var mappedDtos = _mapper.Map<IEnumerable<Order>, IEnumerable<OrderDto>>(orders);
                     return (true, mappedDtos, null);
-                }
-
-                return (false, null, "Not found");
-            }
-            catch (Exception e)
-            {
-                _logger?.LogError(e.ToString());
-                return (false, null, e.Message);
-            }
-        }
-
-        public async Task<(bool IsSuccess, OrderDto Order, string ErrorMessage)> GetOrderAsync(int id)
-        {
-            try
-            {
-                var order = await _dbContext.Orders.FirstOrDefaultAsync(o => o.Id == id);
-                if (order != null)
-                {
-                    var mappedDto = _mapper.Map<Order, OrderDto>(order);
-                    return (true, mappedDto, null);
                 }
 
                 return (false, null, "Not found");
