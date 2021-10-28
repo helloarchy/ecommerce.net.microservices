@@ -1,5 +1,5 @@
 ﻿using System;
-using ECommerce.Api.Orders.Db;
+using System.Collections.Generic;
 
 namespace ECommerce.Api.Orders.Models
 {
@@ -9,6 +9,6 @@ namespace ECommerce.Api.Orders.Models
         public int CustomerId { get; set; }
         public DateTime OrderDate { get; set; }
         public decimal Total { get; set; }
-        public OrderItem[] Items { get; set; }
+        public IEnumerable<OrderItemDto> Items { get; set; }
     }
 }
