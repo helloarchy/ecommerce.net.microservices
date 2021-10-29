@@ -10,7 +10,7 @@ using Xunit;
 
 namespace Ecommerce.Api.Products.Tests
 {
-    public class ProductsUnitTests
+    public class ProductsServiceTest
     {
         [Fact]
         public async Task GetProductsReturnsAllProducts()
@@ -18,7 +18,7 @@ namespace Ecommerce.Api.Products.Tests
             var options =
                 new DbContextOptionsBuilder<ProductsDbContext>()
                     .UseInMemoryDatabase(
-                    nameof(GetProductsReturnsAllProducts)).Options;
+                        nameof(GetProductsReturnsAllProducts)).Options;
             var dbContext = new ProductsDbContext(options);
             CreateProducts(dbContext);
 
