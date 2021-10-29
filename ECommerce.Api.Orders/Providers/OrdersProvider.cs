@@ -87,7 +87,10 @@ namespace ECommerce.Api.Orders.Providers
         {
             try
             {
-                var orders = await _dbContext.Orders.Where(order => order.CustomerId == customerId).ToListAsync();
+                var orders = await _dbContext.Orders
+                    .Include(order => order.Items)
+                    .Where(order => order.CustomerId == customerId)
+                    .ToListAsync();
                 if (orders != null && orders.Any())
                 {
                     var mappedDtos = _mapper.Map<IEnumerable<Order>, IEnumerable<OrderDto>>(orders);
