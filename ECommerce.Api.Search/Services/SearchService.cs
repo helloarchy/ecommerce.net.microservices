@@ -16,7 +16,7 @@ namespace ECommerce.Api.Search.Services
             _ordersService = ordersService;
             _productsService = productsService;
         }
-        
+
         public async Task<(bool IsSuccess, dynamic SearchResults)> SearchAsync(int customerId)
         {
             var ordersResult = await _ordersService.GetOrdersAsync(customerId);
@@ -27,12 +27,13 @@ namespace ECommerce.Api.Search.Services
                 {
                     foreach (var item in order.Items)
                     {
-                        var product = productsResult.Products.FirstOrDefault(p => p.Id == item.ProductId);
-                        item.ProductName = product?.Name;
+                        item.ProductName = productsResult.IsSuccess
+                            ? productsResult.Products.FirstOrDefault(p => p.Id == item.ProductId)?.Name
+                            : "Product information is not available";
                     }
                 }
-                
-                
+
+
                 var result = new
                 {
                     Orders = ordersResult.Orders

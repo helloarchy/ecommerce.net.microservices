@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Polly;
 
 namespace ECommerce.Api.Search
 {
@@ -25,14 +26,12 @@ namespace ECommerce.Api.Search
             services.AddScoped<ISearchService, SearchService>();
             services.AddScoped<IOrdersService, OrdersService>();
             services.AddScoped<IProductsService, ProductsService>();
-            services.AddHttpClient("OrdersService", config =>
-            {
-                config.BaseAddress = new Uri(Configuration["Services:Orders"]);
-            });
-            services.AddHttpClient("ProductsService", config =>
-            {
-                config.BaseAddress = new Uri(Configuration["Services:Products"]);
-            });
+            services.AddHttpClient("OrdersService",
+                config => { config.BaseAddress = new Uri(Configuration["Services:Orders"]); });
+            services
+                .AddHttpClient("ProductsService",
+                    config => { config.BaseAddress = new Uri(Configuration["Services:Products"]); })
+                .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(500)));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
