@@ -8,7 +8,7 @@ using ECommerce.Api.Products.Providers;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
-namespace Ecommerce.Api.Products.Tests
+namespace ECommerce.Api.Products.Tests
 {
     public class ProductsServiceTest
     {
@@ -28,7 +28,7 @@ namespace Ecommerce.Api.Products.Tests
 
             var productsProvider = new ProductsProvider(dbContext, null, mapper);
             var product = await productsProvider.GetProductsAsync();
-            
+
             Assert.True(product.IsSuccess);
             Assert.True(product.Products.Any());
             Assert.Null(product.ErrorMessage);
@@ -46,6 +46,8 @@ namespace Ecommerce.Api.Products.Tests
                     Price = (decimal)(i * Math.PI)
                 });
             }
+
+            dbContext.SaveChanges();
         }
     }
 }
